@@ -1,33 +1,476 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1,
-  "newProjectRoot": "projects",
-  "projects": {
-    "nf-test": {
+	"$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+	"version": 1,
+	"newProjectRoot": "projects",
+	"projects": {
+		"ng-bootstrap-app": {
+			"projectType": "application",
+			"schematics": {},
+			"root": "projects/ng-bootstrap-app",
+			"sourceRoot": "projects/ng-bootstrap-app/src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "@angular-architects/native-federation:build",
+					"options": {},
+					"configurations": {
+						"production": {
+							"target": "ng-bootstrap-app:esbuild:production"
+						},
+						"development": {
+							"target": "ng-bootstrap-app:esbuild:development",
+							"dev": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "@angular-architects/native-federation:build",
+					"options": {
+						"target": "ng-bootstrap-app:serve-original:development",
+						"rebuildDelay": 0,
+						"dev": true,
+						"port": 0
+					}
+				},
+				"extract-i18n": {
+					"builder": "@angular-devkit/build-angular:extract-i18n"
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"polyfills": [
+							"zone.js",
+							"zone.js/testing",
+							"@angular/localize/init"
+						],
+						"tsConfig": "projects/ng-bootstrap-app/tsconfig.spec.json",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/ng-bootstrap-app/public"
+							}
+						],
+						"styles": [
+							"projects/ng-bootstrap-app/src/styles.css"
+						],
+						"scripts": []
+					}
+				},
+				"esbuild": {
+					"builder": "@angular-devkit/build-angular:application",
+					"options": {
+						"outputPath": "dist/ng-bootstrap-app",
+						"index": "projects/ng-bootstrap-app/src/index.html",
+						"browser": "projects/ng-bootstrap-app/src/main.ts",
+						"polyfills": [
+							"zone.js",
+							"@angular/localize/init",
+							"es-module-shims"
+						],
+						"tsConfig": "projects/ng-bootstrap-app/tsconfig.app.json",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/ng-bootstrap-app/public"
+							}
+						],
+						"styles": [
+							"node_modules/bootstrap/dist/css/bootstrap.min.css",
+							"projects/ng-bootstrap-app/src/styles.css"
+						],
+						"scripts": []
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kB",
+									"maximumError": "1MB"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "4kB",
+									"maximumError": "8kB"
+								}
+							],
+							"outputHashing": "all"
+						},
+						"development": {
+							"optimization": false,
+							"extractLicenses": false,
+							"sourceMap": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve-original": {
+					"builder": "@angular-devkit/build-angular:dev-server",
+					"configurations": {
+						"production": {
+							"buildTarget": "ng-bootstrap-app:esbuild:production"
+						},
+						"development": {
+							"buildTarget": "ng-bootstrap-app:esbuild:development"
+						}
+					},
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4200
+					}
+				}
+			}
+		},
+		"clarity-app": {
+			"projectType": "application",
+			"schematics": {},
+			"root": "projects/clarity-app",
+			"sourceRoot": "projects/clarity-app/src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "@angular-architects/native-federation:build",
+					"options": {},
+					"configurations": {
+						"production": {
+							"target": "clarity-app:esbuild:production"
+						},
+						"development": {
+							"target": "clarity-app:esbuild:development",
+							"dev": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "@angular-architects/native-federation:build",
+					"options": {
+						"target": "clarity-app:serve-original:development",
+						"rebuildDelay": 0,
+						"dev": true,
+						"port": 0
+					}
+				},
+				"extract-i18n": {
+					"builder": "@angular-devkit/build-angular:extract-i18n"
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"polyfills": [
+							"zone.js",
+							"zone.js/testing"
+						],
+						"tsConfig": "projects/clarity-app/tsconfig.spec.json",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/clarity-app/public"
+							}
+						],
+						"styles": [
+							"projects/clarity-app/src/styles.css"
+						],
+						"scripts": []
+					}
+				},
+				"esbuild": {
+					"builder": "@angular-devkit/build-angular:application",
+					"options": {
+						"outputPath": "dist/clarity-app",
+						"index": "projects/clarity-app/src/index.html",
+						"browser": "projects/clarity-app/src/main.ts",
+						"polyfills": [
+							"zone.js",
+							"es-module-shims"
+						],
+						"tsConfig": "projects/clarity-app/tsconfig.app.json",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/clarity-app/public"
+							}
+						],
+						"styles": [
+							"node_modules/@cds/core/global.min.css",
+							"node_modules/@cds/core/styles/theme.dark.min.css",
+							"node_modules/@clr/ui/clr-ui.min.css",
+							"projects/clarity-app/src/styles.css"
+						],
+						"scripts": []
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kB",
+									"maximumError": "1MB"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "4kB",
+									"maximumError": "8kB"
+								}
+							],
+							"outputHashing": "all"
+						},
+						"development": {
+							"optimization": false,
+							"extractLicenses": false,
+							"sourceMap": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve-original": {
+					"builder": "@angular-devkit/build-angular:dev-server",
+					"configurations": {
+						"production": {
+							"buildTarget": "clarity-app:esbuild:production"
+						},
+						"development": {
+							"buildTarget": "clarity-app:esbuild:development"
+						}
+					},
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4200
+					}
+				}
+			}
+		},
+		"demo": {
+			"projectType": "application",
+			"schematics": {},
+			"root": "projects/demo",
+			"sourceRoot": "projects/demo/src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "@angular-devkit/build-angular:application",
+					"options": {
+						"outputPath": "dist/demo",
+						"index": "projects/demo/src/index.html",
+						"browser": "projects/demo/src/main.ts",
+						"polyfills": [
+							"zone.js"
+						],
+						"tsConfig": "projects/demo/tsconfig.app.json",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/demo/public"
+							}
+						],
+						"styles": [
+							"projects/demo/src/styles.css"
+						],
+						"scripts": []
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kB",
+									"maximumError": "1MB"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "4kB",
+									"maximumError": "8kB"
+								}
+							],
+							"outputHashing": "all"
+						},
+						"development": {
+							"optimization": false,
+							"extractLicenses": false,
+							"sourceMap": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "@angular-devkit/build-angular:dev-server",
+					"configurations": {
+						"production": {
+							"buildTarget": "demo:build:production"
+						},
+						"development": {
+							"buildTarget": "demo:build:development"
+						}
+					},
+					"defaultConfiguration": "development"
+				},
+				"extract-i18n": {
+					"builder": "@angular-devkit/build-angular:extract-i18n"
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"polyfills": [
+							"zone.js",
+							"zone.js/testing"
+						],
+						"tsConfig": "projects/demo/tsconfig.spec.json",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/demo/public"
+							}
+						],
+						"styles": [
+							"projects/demo/src/styles.css"
+						],
+						"scripts": []
+					}
+				}
+			}
+		},
+		"clarity-shell": {
+			"projectType": "application",
+			"schematics": {},
+			"root": "projects/clarity-shell",
+			"sourceRoot": "projects/clarity-shell/src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "@angular-architects/native-federation:build",
+					"options": {},
+					"configurations": {
+						"production": {
+							"target": "clarity-shell:esbuild:production"
+						},
+						"development": {
+							"target": "clarity-shell:esbuild:development",
+							"dev": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "@angular-architects/native-federation:build",
+					"options": {
+						"target": "clarity-shell:serve-original:development",
+						"rebuildDelay": 0,
+						"dev": true,
+						"port": 0
+					}
+				},
+				"extract-i18n": {
+					"builder": "@angular-devkit/build-angular:extract-i18n"
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"polyfills": [
+							"zone.js",
+							"zone.js/testing"
+						],
+						"tsConfig": "projects/clarity-shell/tsconfig.spec.json",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/clarity-shell/public"
+							}
+						],
+						"styles": [
+							"projects/clarity-shell/src/styles.css"
+						],
+						"scripts": []
+					}
+				},
+				"esbuild": {
+					"builder": "@angular-devkit/build-angular:application",
+					"options": {
+						"outputPath": "dist/clarity-shell",
+						"index": "projects/clarity-shell/src/index.html",
+						"browser": "projects/clarity-shell/src/main.ts",
+						"polyfills": [
+							"zone.js",
+							"es-module-shims"
+						],
+						"tsConfig": "projects/clarity-shell/tsconfig.app.json",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/clarity-shell/public"
+							}
+						],
+						"styles": [
+							"projects/clarity-shell/src/styles.css"
+						],
+						"scripts": []
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kB",
+									"maximumError": "1MB"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "4kB",
+									"maximumError": "8kB"
+								}
+							],
+							"outputHashing": "all"
+						},
+						"development": {
+							"optimization": false,
+							"extractLicenses": false,
+							"sourceMap": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve-original": {
+					"builder": "@angular-devkit/build-angular:dev-server",
+					"configurations": {
+						"production": {
+							"buildTarget": "clarity-shell:esbuild:production"
+						},
+						"development": {
+							"buildTarget": "clarity-shell:esbuild:development"
+						}
+					},
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4201
+					}
+				}
+			}
+    },
+    "ag-grid-app": {
       "projectType": "application",
       "schematics": {},
-      "root": "",
-      "sourceRoot": "src",
+      "root": "projects/ag-grid-app",
+      "sourceRoot": "projects/ag-grid-app/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/nf-test",
-            "index": "src/index.html",
-            "browser": "src/main.ts",
+            "outputPath": "dist/ag-grid-app",
+            "index": "projects/ag-grid-app/src/index.html",
+            "browser": "projects/ag-grid-app/src/main.ts",
             "polyfills": [
               "zone.js"
             ],
-            "tsConfig": "tsconfig.app.json",
+            "tsConfig": "projects/ag-grid-app/tsconfig.app.json",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "projects/ag-grid-app/public"
               }
             ],
             "styles": [
-              "src/styles.css"
+              "projects/ag-grid-app/src/styles.css"
             ],
             "scripts": []
           },
@@ -59,10 +502,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "nf-test:build:production"
+              "buildTarget": "ag-grid-app:build:production"
             },
             "development": {
-              "buildTarget": "nf-test:build:development"
+              "buildTarget": "ag-grid-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -77,20 +520,109 @@
               "zone.js",
               "zone.js/testing"
             ],
-            "tsConfig": "tsconfig.spec.json",
+            "tsConfig": "projects/ag-grid-app/tsconfig.spec.json",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "projects/ag-grid-app/public"
               }
             ],
             "styles": [
-              "src/styles.css"
+              "projects/ag-grid-app/src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "kendo-ui-app": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/kendo-ui-app",
+      "sourceRoot": "projects/kendo-ui-app/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/kendo-ui-app",
+            "index": "projects/kendo-ui-app/src/index.html",
+            "browser": "projects/kendo-ui-app/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/kendo-ui-app/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/kendo-ui-app/public"
+              }
+            ],
+            "styles": [
+              "projects/kendo-ui-app/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "kendo-ui-app:build:production"
+            },
+            "development": {
+              "buildTarget": "kendo-ui-app:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/kendo-ui-app/tsconfig.spec.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/kendo-ui-app/public"
+              }
+            ],
+            "styles": [
+              "projects/kendo-ui-app/src/styles.css"
             ],
             "scripts": []
           }
         }
       }
     }
-  }
+	}
 }

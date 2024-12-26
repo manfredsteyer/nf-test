@@ -1,0 +1,39 @@
+<h1 class="mt0">Micro Frontend!</h1>
+
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu odio nisi.
+Vestibulum dignissim eget massa sit amet feugiat. Quisque auctor mattis quam eu
+suscipit. Morbi ipsum risus, feugiat vitae sem at, tincidunt elementum magna.
+Phasellus tristique posuere dui, ut tempus felis sagittis quis. Integer iaculis
+ultrices elit, sed venenatis eros. Vivamus interdum semper velit eget gravida.
+Sed finibus eget lacus sed semper. Suspendisse fringilla, tellus in molestie
+cursus, sapien purus volutpat lacus, eget venenatis erat est vitae libero.
+Aliquam et orci hendrerit, consequat purus non, imperdiet ipsum.
+</p>
+
+<br /><br />
+
+<clr-tabs>
+  <clr-tab>
+    <button clrTabLink>Dashboard</button>
+    <clr-tab-content *clrIfActive>
+      <p cds-text="body" cds-layout="m-t:md">
+        Content for Dashboard tab. Here is a
+        <a href="javascript://">link</a>
+        that can be accessed via clicking or through keyboard via tabbing.
+      </p>
+    </clr-tab-content>
+  </clr-tab>
+  <clr-tab>
+    <button clrTabLink>Management</button>
+    <clr-tab-content *clrIfActive>
+      <p cds-text="body" cds-layout="m-t:md">Content for Management tab.</p>
+    </clr-tab-content>
+  </clr-tab>
+  <clr-tab>
+    <button clrTabLink>Cloud</button>
+    <clr-tab-content *clrIfActive>
+      <p cds-text="body" cds-layout="m-t:md">Content for Cloud tab.</p>
+    </clr-tab-content>
+  </clr-tab>
+</clr-tabs>

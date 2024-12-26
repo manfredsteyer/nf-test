@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'nf-test' title`, () => {
+  it(`should have the 'kendo-ui-app' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('nf-test');
+    expect(app.title).toEqual('kendo-ui-app');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, nf-test');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, kendo-ui-app');
   });
 });
