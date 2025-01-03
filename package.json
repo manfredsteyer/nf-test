@@ -24,9 +24,13 @@
     "@clr/ui": "^17.4.0",
     "@ng-bootstrap/ng-bootstrap": "^18.0.0",
     "@popperjs/core": "^2.11.8",
+    "@primeng/themes": "^19.0.2",
     "@softarc/native-federation-node": "^2.0.10",
     "bootstrap": "^5.3.3",
+    "chart.js": "^4.4.7",
+    "chartjs": "^0.3.24",
     "es-module-shims": "^1.5.12",
+    "primeng": "^19.0.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
