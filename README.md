@@ -17,7 +17,7 @@ As not each UI library always officially supports the latest Angular version, we
 
 Please note that for primeng and ag-grid we need to activate the `transient` flag to get transitive dependencies shared separately. 
 
-```json
+```javascript
   [...]
   shared: {
     ...shareAll({ 
