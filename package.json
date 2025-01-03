@@ -12,10 +12,12 @@
   "dependencies": {
     "@angular-architects/native-federation": "^19.0.2",
     "@angular/animations": "^19.0.0",
+    "@angular/cdk": "^18.2.14",
     "@angular/common": "^19.0.0",
     "@angular/compiler": "^19.0.0",
     "@angular/core": "^19.0.0",
     "@angular/forms": "^19.0.0",
+    "@angular/material": "^18.2.14",
     "@angular/platform-browser": "^19.0.0",
     "@angular/platform-browser-dynamic": "^19.0.0",
     "@angular/router": "^19.0.0",
