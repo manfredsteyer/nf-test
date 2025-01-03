@@ -510,9 +510,10 @@
 					"builder": "@angular-devkit/build-angular:karma",
 					"options": {
 						"polyfills": [
-							"zone.js",
-							"zone.js/testing"
-						],
+              "zone.js",
+              "zone.js/testing",
+              "@angular/localize/init"
+            ],
 						"tsConfig": "projects/kendo-ui-app/tsconfig.spec.json",
 						"assets": [
 							{
@@ -533,9 +534,10 @@
 						"index": "projects/kendo-ui-app/src/index.html",
 						"browser": "projects/kendo-ui-app/src/main.ts",
 						"polyfills": [
-							"zone.js",
-							"es-module-shims"
-						],
+              "zone.js",
+              "es-module-shims",
+              "@angular/localize/init"
+            ],
 						"tsConfig": "projects/kendo-ui-app/tsconfig.app.json",
 						"assets": [
 							{
@@ -544,6 +546,7 @@
 							}
 						],
 						"styles": [
+							"node_modules/@progress/kendo-theme-default/dist/all.css",
 							"projects/kendo-ui-app/src/styles.css"
 						],
 						"scripts": []
