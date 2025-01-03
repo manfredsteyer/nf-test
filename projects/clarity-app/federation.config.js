@@ -1,4 +1,5 @@
 const { withNativeFederation, shareAll } = require('@angular-architects/native-federation/config');
+const globalSkipList = require('../../global-skip-list');
 
 module.exports = withNativeFederation({
 
@@ -17,6 +18,9 @@ module.exports = withNativeFederation({
     'rxjs/fetch',
     'rxjs/testing',
     'rxjs/webSocket',
+
+    ...globalSkipList
+    
     // Add further packages you don't need at runtime
   ]
 

@@ -20,12 +20,7 @@ module.exports = withNativeFederation({
 
     p => p.startsWith('ng-zorro-antd/graph'),
     p => p.startsWith('ng-zorro-antd/cron-expression')
-    // 'cron-parser',
-    // 'd3-shape',
-    // 'd3-drag',
-    // 'd3-selection',
-    // 'd3-zoom',
-    // 'd3-transition',
+    
     // Add further packages you don't need at runtime
   ]
 
