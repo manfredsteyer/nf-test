@@ -365,13 +365,60 @@
 			"prefix": "app",
 			"architect": {
 				"build": {
+					"builder": "@angular-architects/native-federation:build",
+					"options": {},
+					"configurations": {
+						"production": {
+							"target": "ag-grid-app:esbuild:production"
+						},
+						"development": {
+							"target": "ag-grid-app:esbuild:development",
+							"dev": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "@angular-architects/native-federation:build",
+					"options": {
+						"target": "ag-grid-app:serve-original:development",
+						"rebuildDelay": 0,
+						"dev": true,
+						"port": 0
+					}
+				},
+				"extract-i18n": {
+					"builder": "@angular-devkit/build-angular:extract-i18n"
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"polyfills": [
+							"zone.js",
+							"zone.js/testing"
+						],
+						"tsConfig": "projects/ag-grid-app/tsconfig.spec.json",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/ag-grid-app/public"
+							}
+						],
+						"styles": [
+							"projects/ag-grid-app/src/styles.css"
+						],
+						"scripts": []
+					}
+				},
+				"esbuild": {
 					"builder": "@angular-devkit/build-angular:application",
 					"options": {
 						"outputPath": "dist/ag-grid-app",
 						"index": "projects/ag-grid-app/src/index.html",
 						"browser": "projects/ag-grid-app/src/main.ts",
 						"polyfills": [
-							"zone.js"
+							"zone.js",
+							"es-module-shims"
 						],
 						"tsConfig": "projects/ag-grid-app/tsconfig.app.json",
 						"assets": [
@@ -409,39 +456,19 @@
 					},
 					"defaultConfiguration": "production"
 				},
-				"serve": {
+				"serve-original": {
 					"builder": "@angular-devkit/build-angular:dev-server",
 					"configurations": {
 						"production": {
-							"buildTarget": "ag-grid-app:build:production"
+							"buildTarget": "ag-grid-app:esbuild:production"
 						},
 						"development": {
-							"buildTarget": "ag-grid-app:build:development"
+							"buildTarget": "ag-grid-app:esbuild:development"
 						}
 					},
-					"defaultConfiguration": "development"
-				},
-				"extract-i18n": {
-					"builder": "@angular-devkit/build-angular:extract-i18n"
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
+					"defaultConfiguration": "development",
 					"options": {
-						"polyfills": [
-							"zone.js",
-							"zone.js/testing"
-						],
-						"tsConfig": "projects/ag-grid-app/tsconfig.spec.json",
-						"assets": [
-							{
-								"glob": "**/*",
-								"input": "projects/ag-grid-app/public"
-							}
-						],
-						"styles": [
-							"projects/ag-grid-app/src/styles.css"
-						],
-						"scripts": []
+						"port": 4200
 					}
 				}
 			}
@@ -454,13 +481,60 @@
 			"prefix": "app",
 			"architect": {
 				"build": {
+					"builder": "@angular-architects/native-federation:build",
+					"options": {},
+					"configurations": {
+						"production": {
+							"target": "kendo-ui-app:esbuild:production"
+						},
+						"development": {
+							"target": "kendo-ui-app:esbuild:development",
+							"dev": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "@angular-architects/native-federation:build",
+					"options": {
+						"target": "kendo-ui-app:serve-original:development",
+						"rebuildDelay": 0,
+						"dev": true,
+						"port": 0
+					}
+				},
+				"extract-i18n": {
+					"builder": "@angular-devkit/build-angular:extract-i18n"
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"polyfills": [
+							"zone.js",
+							"zone.js/testing"
+						],
+						"tsConfig": "projects/kendo-ui-app/tsconfig.spec.json",
+						"assets": [
+							{
+								"glob": "**/*",
+								"input": "projects/kendo-ui-app/public"
+							}
+						],
+						"styles": [
+							"projects/kendo-ui-app/src/styles.css"
+						],
+						"scripts": []
+					}
+				},
+				"esbuild": {
 					"builder": "@angular-devkit/build-angular:application",
 					"options": {
 						"outputPath": "dist/kendo-ui-app",
 						"index": "projects/kendo-ui-app/src/index.html",
 						"browser": "projects/kendo-ui-app/src/main.ts",
 						"polyfills": [
-							"zone.js"
+							"zone.js",
+							"es-module-shims"
 						],
 						"tsConfig": "projects/kendo-ui-app/tsconfig.app.json",
 						"assets": [
@@ -498,39 +572,19 @@
 					},
 					"defaultConfiguration": "production"
 				},
-				"serve": {
+				"serve-original": {
 					"builder": "@angular-devkit/build-angular:dev-server",
 					"configurations": {
 						"production": {
-							"buildTarget": "kendo-ui-app:build:production"
+							"buildTarget": "kendo-ui-app:esbuild:production"
 						},
 						"development": {
-							"buildTarget": "kendo-ui-app:build:development"
+							"buildTarget": "kendo-ui-app:esbuild:development"
 						}
 					},
-					"defaultConfiguration": "development"
-				},
-				"extract-i18n": {
-					"builder": "@angular-devkit/build-angular:extract-i18n"
-				},
-				"test": {
-					"builder": "@angular-devkit/build-angular:karma",
+					"defaultConfiguration": "development",
 					"options": {
-						"polyfills": [
-							"zone.js",
-							"zone.js/testing"
-						],
-						"tsConfig": "projects/kendo-ui-app/tsconfig.spec.json",
-						"assets": [
-							{
-								"glob": "**/*",
-								"input": "projects/kendo-ui-app/public"
-							}
-						],
-						"styles": [
-							"projects/kendo-ui-app/src/styles.css"
-						],
-						"scripts": []
+						"port": 4200
 					}
 				}
 			}

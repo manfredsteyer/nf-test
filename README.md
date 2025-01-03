@@ -15,7 +15,7 @@ As not each UI library always officially supports the latest Angular version, we
 
 ## Transitive Flag
 
-Please note that for primeng we need to activate the transient flag to get transitive dependencies shared separately. This is needed as primeng communicates with its themes via a transient dependency:
+Please note that for primeng and ag-grid we need to activate the `transient` flag to get transitive dependencies shared separately. 
 
 ```json
   [...]

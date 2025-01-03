@@ -26,6 +26,7 @@
     "@popperjs/core": "^2.11.8",
     "@primeng/themes": "^19.0.2",
     "@softarc/native-federation-node": "^2.0.10",
+    "ag-grid-angular": "^33.0.3",
     "bootstrap": "^5.3.3",
     "chart.js": "^4.4.7",
     "chartjs": "^0.3.24",
