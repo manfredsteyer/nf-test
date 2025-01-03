@@ -1,59 +1,33 @@
-# NfTest
+# Native Federation Show Case
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.6.
+Demonstrates the Usage of Native Federation and several well-known UI libraries for Angular.
 
-## Development server
+## Trying it out
 
-To start a local development server, run:
-
-```bash
-ng serve
+```
+npm i -f
+ng serve <project>
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Please find the available projects that are named after the respective UI libraries in the `projects` folder.
 
-## Code scaffolding
+As not each UI library always officially supports the latest Angular version, we need the `-f` when installing the dependencies.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Transitive Flag
 
-```bash
-ng generate component component-name
+Please note that for primeng we need to activate the transient flag to get transitive dependencies shared separately. This is needed as primeng communicates with its themes via a transient dependency:
+
+```json
+  [...]
+  shared: {
+    ...shareAll({ 
+        singleton: true, 
+        strictVersion: true, 
+        requiredVersion: 'auto', 
+
+        // Activate transient flag
+        transient: true 
+    }),
+  },
+  [...]
 ```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
