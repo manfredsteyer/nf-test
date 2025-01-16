@@ -10,7 +10,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular-architects/native-federation": "^19.0.2",
+    "@angular-architects/native-federation": "^19.0.5",
     "@angular/animations": "^19.0.0",
     "@angular/cdk": "^18.2.14",
     "@angular/common": "^19.0.0",
@@ -31,7 +31,9 @@
     "@progress/kendo-angular-dropdowns": "^17.2.0",
     "@progress/kendo-angular-grid": "^17.2.0",
     "@progress/kendo-theme-default": "^10.1.0",
+    "@softarc/native-federation": "^2.0.18",
     "@softarc/native-federation-node": "^2.0.10",
+    "@softarc/native-federation-runtime": "^2.0.18",
     "ag-grid-angular": "^33.0.3",
     "bootstrap": "^5.3.3",
     "chart.js": "^4.4.7",
