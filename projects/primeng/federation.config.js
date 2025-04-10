@@ -17,14 +17,12 @@ module.exports = withNativeFederation({
       singleton: true,
       strictVersion: true,
       requiredVersion: "auto",
-      transient: true,
     }),
     ...share({
       "@primeng/themes/aura": {
         singleton: true,
         strictVersion: true,
         requiredVersion: "auto",
-        transient: true,
         includeSecondaries: false,
         build: 'separate'
       },

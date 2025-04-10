@@ -1,4 +1,4 @@
-const { withNativeFederation, shareAll } = require('@angular-architects/native-federation/config');
+const { withNativeFederation, shareAll, share } = require('@angular-architects/native-federation/config');
 const globalSkipList = require('../../global-skip-list');
 
 module.exports = withNativeFederation({
@@ -9,8 +9,11 @@ module.exports = withNativeFederation({
     './Component': './projects/ag-grid-app/src/app/app.component.ts',
   },
 
+  //
+  // Important: To make this work, explicitly install ag-grid-community so that it is shared too
+  //
   shared: {
-    ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto', transient: true }),
+    ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' }),
   },
 
   skip: [
@@ -28,3 +31,5 @@ module.exports = withNativeFederation({
   // https://shorturl.at/jmzH0
   
 });
+
+console.log('module.exports ', module.exports );
