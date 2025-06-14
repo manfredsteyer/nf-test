@@ -12,19 +12,22 @@ module.exports = withNativeFederation({
     ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' }),
   },
 
+  // We don't need the skip list anymore thanks 
+  // to the new ignoreUnusedDeps feature below
   skip: [
-    'rxjs/ajax',
-    'rxjs/fetch',
-    'rxjs/testing',
-    'rxjs/webSocket',
+    // 'rxjs/ajax',
+    // 'rxjs/fetch',
+    // 'rxjs/testing',
+    // 'rxjs/webSocket',
 
-    p => p.startsWith('ng-zorro-antd/graph'),
-    p => p.startsWith('ng-zorro-antd/cron-expression')
-    
-    // Add further packages you don't need at runtime
-  ]
+    // ...globalSkipList
+  ],
 
   // Please read our FAQ about sharing libs:
   // https://shorturl.at/jmzH0
+  
+  features: {
+    ignoreUnusedDeps: true,
+  },
   
 });

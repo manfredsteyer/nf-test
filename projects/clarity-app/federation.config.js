@@ -13,18 +13,23 @@ module.exports = withNativeFederation({
     ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' }),
   },
 
-  skip: [
-    'rxjs/ajax',
-    'rxjs/fetch',
-    'rxjs/testing',
-    'rxjs/webSocket',
 
-    ...globalSkipList
-    
-    // Add further packages you don't need at runtime
-  ]
+  // We don't need the skip list anymore thanks 
+  // to the new ignoreUnusedDeps feature below
+  skip: [
+    // 'rxjs/ajax',
+    // 'rxjs/fetch',
+    // 'rxjs/testing',
+    // 'rxjs/webSocket',
+
+    // ...globalSkipList
+  ],
 
   // Please read our FAQ about sharing libs:
   // https://shorturl.at/jmzH0
   
+  features: {
+    ignoreUnusedDeps: true,
+  },
+
 });
