@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { AddressComponent } from "../address/address.component";
+import { TableComponent } from "../table/table.component";
 
 @Component({
   selector: 'app-nav',
@@ -22,7 +23,8 @@ import { AddressComponent } from "../address/address.component";
     MatListModule,
     MatIconModule,
     AsyncPipe,
-    AddressComponent
+    AddressComponent,
+    TableComponent
 ]
 })
 export class NavComponent {
