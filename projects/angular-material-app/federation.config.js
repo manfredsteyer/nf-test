@@ -22,10 +22,10 @@ module.exports = withNativeFederation({
   // We don't need the skip list anymore thanks
   // to the new ignoreUnusedDeps feature below
   skip: [
-    // 'rxjs/ajax',
-    // 'rxjs/fetch',
-    // 'rxjs/testing',
-    // 'rxjs/webSocket',
+    'rxjs/ajax',
+    'rxjs/fetch',
+    'rxjs/testing',
+    'rxjs/webSocket',
     // ...globalSkipList
   ],
 
