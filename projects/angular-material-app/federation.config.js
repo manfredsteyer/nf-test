@@ -1,6 +1,7 @@
 const {
   withNativeFederation,
   shareAll,
+  share
 } = require("@angular-architects/native-federation/config");
 const globalSkipList = require("../../global-skip-list");
 
@@ -16,7 +17,7 @@ module.exports = withNativeFederation({
       singleton: true,
       strictVersion: true,
       requiredVersion: "auto",
-    }),
+    })
   },
 
   // We don't need the skip list anymore thanks

@@ -11,7 +11,7 @@ import { MatSort, MatSortModule } from '@angular/material/sort'
 export class TableComponent implements AfterViewInit {
   displayedColumns: string[] = ['position', 'name'];
   dataSource = new MatTableDataSource([
-    { position: 1, name: 'Hydrogen????' },
+    { position: 1, name: 'Hydrogen' },
     { position: 2, name: 'Helium' },
     { position: 3, name: 'Iron' },
     { position: 4, name: 'Gorgonzola' },

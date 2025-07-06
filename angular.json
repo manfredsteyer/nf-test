@@ -849,9 +849,6 @@
 					"builder": "@angular-architects/native-federation:build",
 					"options": {
 						"target": "angular-material-app:serve-original:development",
-						"buildNotifications": {
-							"enable": true
-						},
 						"rebuildDelay": 0,
 						"dev": true,
 						"port": 0
